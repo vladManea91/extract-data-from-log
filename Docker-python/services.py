@@ -4,12 +4,13 @@ with open ('test.log', 'r') as test:
 services = re.findall("\((.*?):", text)
 servicesName = str(sorted(set(services)))
 
+print (servicesName)
 request=""
 for i in servicesName:
-    if str(i) !="[" and str(i) !="'" and str(i) != "," and str(i) !=" ":
+    if str(i) !="[" and str(i) !="'" and str(i) != "," and str(i) !=" " and str(i) != "]":
         request= request +str(i)
 
-    if str(i) == ",":
+    if str(i) == "," or str(i) == "]":
         rAddClient = services.count(request)
         print(request + "-" + str(rAddClient))
         request=""
